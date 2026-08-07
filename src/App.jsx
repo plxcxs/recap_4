@@ -26,7 +26,6 @@ export default App;
 export function Card({ hex, role, contrastText }) {
     return (
         <article>
-            <a href="https://youtube.com"></a>
             <div
                 id="color_card"
                 style={{
