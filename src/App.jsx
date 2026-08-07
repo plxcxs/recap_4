@@ -22,7 +22,6 @@ function App() {
     );
 }
 
-console.log("Hello friend !");
 export default App;
 export function Card({ hex, role, contrastText }) {
     return (
