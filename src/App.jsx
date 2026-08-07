@@ -22,9 +22,6 @@ function App() {
     );
 }
 
-/* const role = "role";
-const hex = "hex";
-const color = "red"; */
 console.log("Hello friend !");
 export default App;
 export function Card({ hex, role, contrastText }) {
