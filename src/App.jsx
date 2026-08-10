@@ -6,15 +6,15 @@ import { useState } from "react";
 import { uid } from "uid";
 
 function App() {
-    const [initialColor, setInitialColor] = useState(initialColors);
+    const [colors, setColor] = useState(initialColors);
     function handleAddColor(newColor) {
-        setInitialColor([{ id: uid(), ...newColor }, ...initialColor]);
+        setColor([{ id: uid(), ...newColor }, ...colors]);
     }
     return (
         <>
             <h1>Theme Creator</h1>
             <ColorForm onSubmitColor={handleAddColor} />
-            {initialColor.map((color) => {
+            {colors.map((color) => {
                 return <Color key={color.id} color={color} />;
             })}
         </>
