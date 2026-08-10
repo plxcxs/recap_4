@@ -11,9 +11,9 @@ export default function Color({ color }) {
                 }}
             >
                 <div>
-                    <div className="color-card-headline"> hex: {color.hex}</div>
-                    <div>role: {color.role}</div>{" "}
-                    <div>contrast: {color.contrastText}</div>
+                    <h2 className="color-card-headline"> hex: {color.hex}</h2>
+                    <p>role: {color.role}</p>
+                    <p>contrast: {color.contrastText}</p>
                 </div>
             </div>
         </article>

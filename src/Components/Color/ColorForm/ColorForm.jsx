@@ -8,37 +8,38 @@ export default function ColorForm({
         contrastText: "#ffffff",
     },
 }) {
-    function handleSubmit() {
+    function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
         onSubmitColor(data);
     }
     return (
-        <form className="colorForm" onSubmit={handleSubmit}>
+        <form className="color-form" onSubmit={handleSubmit}>
             <label htmlFor="role">
                 role
                 <br />
-                <input type="text" name="role" id="role" />
+                <input
+                    type="text"
+                    name="role"
+                    id="role"
+                    defaultValue={initialData.role}
+                />
             </label>
 
             <label htmlFor="hex">
-                primary
+                hex
                 <br />
                 <ColorInput id="hex" defaultValue={initialData.hex} />
-                {/*     <input type="text" id="hex" />
-                <input type="color" name="" id="" /> */}
             </label>
 
-            <label htmlFor="contrast">
+            <label htmlFor="contrastText">
                 contrast
                 <br />
                 <ColorInput
                     id="contrastText"
                     defaultValue={initialData.contrastText}
                 />
-                {/* <input type="text" />
-                <input type="color" name="" id="" /> */}
             </label>
             <button>Add Color</button>
         </form>
