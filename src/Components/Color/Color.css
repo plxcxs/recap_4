@@ -10,3 +10,13 @@
     background: black;
     color: white;
 }
+
+.colorForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.inputArea {
+    display: flex;
+    flex-direction: column;
+}
