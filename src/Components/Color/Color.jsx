@@ -55,6 +55,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                     {isEditing ? "Cancel" : "Edit"}
                 </button>
             </div>
+            {/* this is a comment to make the code comittable i will delete it so u dont have to put it in the review */}
         </article>
     );
 }
