@@ -4,14 +4,14 @@ import { useState } from "react";
 export default function Color({ color, onDeleteColor }) {
     const [isVisible, setIsVisible] = useState(false);
 
-    function onDelete() {
+    function handleDelete() {
         if (isVisible) {
             onDeleteColor(color.id);
         }
         setIsVisible(true);
     }
 
-    function onCancel() {
+    function handleCancel() {
         setIsVisible(false);
     }
 
@@ -31,15 +31,12 @@ export default function Color({ color, onDeleteColor }) {
                 </div>
                 <div className={isVisible ? "" : "display-none"}>
                     <h3>delete color ?</h3>
-                    <button
-                        className={isVisible ? "display-block" : ""}
-                        onClick={onCancel}
-                    >
-                        cancel
-                    </button>
+                    <button onClick={handleCancel}>cancel</button>
                 </div>
 
-                <button onClick={onDelete}>Delete</button>
+                <button onClick={handleDelete}>
+                    {isVisible ? "Confirm Delete" : "Delete"}
+                </button>
             </div>
         </article>
     );
