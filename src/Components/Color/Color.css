@@ -16,3 +16,10 @@
     flex-direction: column;
     width: 300px;
 }
+
+.display-none {
+    display: none;
+}
+.display-block {
+    display: block;
+}

@@ -7,15 +7,26 @@ import { uid } from "uid";
 
 function App() {
     const [colors, setColor] = useState(initialColors);
+    function handleDeleteColor(idToDelete) {
+        setColor(colors.filter((color) => color.id !== idToDelete));
+    }
     function handleAddColor(newColor) {
         setColor([{ id: uid(), ...newColor }, ...colors]);
     }
+
     return (
         <>
             <h1>Theme Creator</h1>
             <ColorForm onSubmitColor={handleAddColor} />
+            {colors.length === 0 && <h3>Please choose a color</h3>}
             {colors.map((color) => {
-                return <Color key={color.id} color={color} />;
+                return (
+                    <Color
+                        key={color.id}
+                        color={color}
+                        onDeleteColor={handleDeleteColor}
+                    />
+                );
             })}
         </>
     );
