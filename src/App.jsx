@@ -25,6 +25,7 @@ function App() {
             }),
         );
     }
+    console.log("these are not the droids ur looking for");
     return (
         <>
             <h1>Theme Creator</h1>
