@@ -1,8 +1,9 @@
 import "./Color.css";
 import { useState } from "react";
-
-export default function Color({ color, onDeleteColor }) {
+import ColorForm from "./ColorForm/ColorForm";
+export default function Color({ color, onDeleteColor, onUpdateColor }) {
     const [isVisible, setIsVisible] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     function handleDelete() {
         if (isVisible) {
@@ -13,6 +14,13 @@ export default function Color({ color, onDeleteColor }) {
 
     function handleCancel() {
         setIsVisible(false);
+    }
+    function handleEdit() {
+        setIsEditing(!isEditing);
+    }
+    function handleUpdate(updatedColor) {
+        onUpdateColor(updatedColor);
+        setIsEditing(false);
     }
 
     return (
@@ -29,6 +37,12 @@ export default function Color({ color, onDeleteColor }) {
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
                 </div>
+                <ColorForm
+                    color={color}
+                    isEdit={isEditing}
+                    className={isEditing ? "" : "display-none"}
+                    onSubmitColor={handleUpdate}
+                />
                 <div className={isVisible ? "" : "display-none"}>
                     <h3>delete color ?</h3>
                     <button onClick={handleCancel}>cancel</button>
@@ -37,7 +51,9 @@ export default function Color({ color, onDeleteColor }) {
                 <button onClick={handleDelete}>
                     {isVisible ? "Confirm Delete" : "Delete"}
                 </button>
+                {!isEditing && <button onClick={handleEdit}>Edit</button>}
             </div>
+            {/* this is a comment to make the code comittable i will delete it so u dont have to put it in the review */}
         </article>
     );
 }
