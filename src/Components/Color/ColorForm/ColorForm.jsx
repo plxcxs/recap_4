@@ -10,10 +10,13 @@ export default function ColorForm({
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        onSubmitColor({ ...data, id: color.id });
+        onSubmitColor(isEdit ? { ...data, id: color.id } : data);
     }
     return (
-        <form className={`color-form ${className}`} onSubmit={handleSubmit}>
+        <form
+            className={`color-form ${className ?? ""}`}
+            onSubmit={handleSubmit}
+        >
             <label htmlFor="role">
                 role
                 <br />

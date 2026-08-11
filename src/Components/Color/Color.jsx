@@ -51,7 +51,9 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                 <button onClick={handleDelete}>
                     {isVisible ? "Confirm Delete" : "Delete"}
                 </button>
-                {!isEditing && <button onClick={handleEdit}>Edit</button>}
+                <button onClick={handleEdit}>
+                    {isEditing ? "Cancel" : "Edit"}
+                </button>
             </div>
         </article>
     );
