@@ -13,7 +13,15 @@ function App() {
     function handleAddColor(newColor) {
         setColor([{ id: uid(), ...newColor }, ...colors]);
     }
-
+    function handleUpdateColor(updatedColor) {
+        setColor(
+            colors.map((color) => {
+                return color.id === updatedColor.id
+                    ? { ...color, ...updatedColor }
+                    : color;
+            }),
+        );
+    }
     return (
         <>
             <h1>Theme Creator</h1>
@@ -25,6 +33,7 @@ function App() {
                         key={color.id}
                         color={color}
                         onDeleteColor={handleDeleteColor}
+                        onUpdateColor={handleUpdateColor}
                     />
                 );
             })}
