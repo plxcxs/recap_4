@@ -2,11 +2,14 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import "./App.css";
 import ColorForm from "./Components/Color/ColorForm/ColorForm";
-import { useState } from "react";
+
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-    const [colors, setColor] = useState(initialColors);
+    const [colors, setColor] = useLocalStorageState("colors", {
+        defaultValue: initialColors,
+    });
     function handleDeleteColor(idToDelete) {
         setColor(colors.filter((color) => color.id !== idToDelete));
     }
@@ -22,6 +25,7 @@ function App() {
             }),
         );
     }
+    console.log("these are not the droids ur looking for");
     return (
         <>
             <h1>Theme Creator</h1>
