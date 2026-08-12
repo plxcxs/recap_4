@@ -1,6 +1,7 @@
 import "./Color.css";
 import { useState } from "react";
 import ColorForm from "./ColorForm/ColorForm";
+import CopyToClipboard from "../CopyToClipboard/CopyToClipboard";
 export default function Color({ color, onDeleteColor, onUpdateColor }) {
     const [isVisible, setIsVisible] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -34,6 +35,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
             >
                 <div>
                     <h2 className="color-card-headline"> hex: {color.hex}</h2>
+                    <CopyToClipboard hex={color.hex} />
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
                 </div>
@@ -55,7 +57,6 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                     {isEditing ? "Cancel" : "Edit"}
                 </button>
             </div>
-            {/* this is a comment to make the code comittable i will delete it so u dont have to put it in the review */}
         </article>
     );
 }
