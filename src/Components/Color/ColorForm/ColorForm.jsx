@@ -6,11 +6,33 @@ export default function ColorForm({
     className,
     onSubmitColor,
 }) {
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        onSubmitColor(isEdit ? { ...data, id: color.id } : data);
+        const contrastCheck = await postFetch(data.hex, data.contrastText);
+        onSubmitColor(
+            isEdit
+                ? { ...data, id: color.id, contrastCheck }
+                : { ...data, contrastCheck },
+        );
+    }
+
+    async function postFetch(hex, contrast) {
+        const response = await fetch(
+            "https://aremycolorsaccessible.com/api/are-they",
+            {
+                method: "POST",
+                body: JSON.stringify({
+                    colors: [hex, contrast],
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            },
+        );
+        const areTheyData = await response.json();
+        return areTheyData;
     }
     return (
         <form

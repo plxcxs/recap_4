@@ -23,7 +23,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
         onUpdateColor(updatedColor);
         setIsEditing(false);
     }
-
+    console.log("Color prop:", color);
     return (
         <article>
             <div
@@ -38,6 +38,11 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                     <CopyToClipboard hex={color.hex} />
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
+                    <p>
+                        {color.contrastCheck?.overall === "Yup"
+                            ? "✅ Contrast OK"
+                            : "❌ Contrast insufficient"}
+                    </p>
                 </div>
                 <ColorForm
                     color={color}
