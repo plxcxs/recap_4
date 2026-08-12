@@ -35,7 +35,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
             >
                 <div>
                     <h2 className="color-card-headline"> hex: {color.hex}</h2>
-                    <CopyToClipboard color={color.hex} />
+                    <CopyToClipboard hex={color.hex} />
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
                 </div>

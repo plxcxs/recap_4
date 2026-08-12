@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-async function copy(text) {
-    try {
-        await navigator.clipboard.writeText(text);
-    } catch (error) {
-        console.error(error.message);
-    }
-}
 
-export default function CopyToClipboard({ color }) {
+export default function CopyToClipboard({ hex }) {
     const [showMessage, setShowMessage] = useState(false);
+    async function copy(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+            setShowMessage(true);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     useEffect(() => {
         if (showMessage) {
@@ -21,8 +22,7 @@ export default function CopyToClipboard({ color }) {
     return (
         <button
             onClick={() => {
-                copy(color);
-                setShowMessage(true);
+                copy(hex);
             }}
         >
             {showMessage ? "Color has been copied" : "Copy Color"}
