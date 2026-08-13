@@ -23,7 +23,7 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
         onUpdateColor(updatedColor);
         setIsEditing(false);
     }
-    console.log("Color prop:", color);
+
     return (
         <article>
             <div
@@ -39,9 +39,11 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
                     <p>
-                        {color.contrastCheck?.overall === "Yup"
-                            ? "✅ Contrast OK"
-                            : "❌ Contrast insufficient"}
+                        {!color.contrastCheck
+                            ? "ℹ️ Not checked yet"
+                            : color.contrastCheck.overall === "Yup"
+                              ? "✅ Contrast OK"
+                              : "❌ Contrast insufficient"}
                     </p>
                 </div>
                 <ColorForm

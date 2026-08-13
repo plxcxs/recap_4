@@ -19,20 +19,24 @@ export default function ColorForm({
     }
 
     async function postFetch(hex, contrast) {
-        const response = await fetch(
-            "https://aremycolorsaccessible.com/api/are-they",
-            {
-                method: "POST",
-                body: JSON.stringify({
-                    colors: [hex, contrast],
-                }),
-                headers: {
-                    "Content-Type": "application/json",
+        try {
+            const response = await fetch(
+                "https://aremycolorsaccessible.com/api/are-they",
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        colors: [hex, contrast],
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 },
-            },
-        );
-        const areTheyData = await response.json();
-        return areTheyData;
+            );
+            return await response.json();
+        } catch (error) {
+            console.error("Contrast check failed:", error);
+            return null;
+        }
     }
     return (
         <form
