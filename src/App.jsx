@@ -18,10 +18,10 @@ function App() {
     }
     function handleUpdateColor(updatedColor) {
         setColor(
-            colors.map((color) => {
-                return color.id === updatedColor.id
-                    ? { ...color, ...updatedColor }
-                    : color;
+            colors.map((currentColor) => {
+                return currentColor.id === updatedColor.id
+                    ? { ...currentColor, ...updatedColor }
+                    : currentColor;
             }),
         );
     }

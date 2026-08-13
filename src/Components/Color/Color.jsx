@@ -38,6 +38,13 @@ export default function Color({ color, onDeleteColor, onUpdateColor }) {
                     <CopyToClipboard hex={color.hex} />
                     <p>role: {color.role}</p>
                     <p>contrast: {color.contrastText}</p>
+                    <p>
+                        {!color.contrastCheck
+                            ? "ℹ️ Not checked yet"
+                            : color.contrastCheck.overall === "Yup"
+                              ? "✅ Contrast OK"
+                              : "❌ Contrast insufficient"}
+                    </p>
                 </div>
                 <ColorForm
                     color={color}
